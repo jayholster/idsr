@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introduction to R for Data Science: A LISA 2020 Guidebook</title>
+  <meta name="description" content="Introduction to R for Data Science: A LISA 2020 Guidebook" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Introduction to R for Data Science: A LISA 2020 Guidebook" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to R for Data Science: A LISA 2020 Guidebook" />
+  
+  
+  
+
+<meta name="author" content="Jacob D. Holster" />
+
+
+<meta name="date" content="2022-07-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="working-with-data-in-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/vembedr-0.1.5/css/vembedr.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to R for Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> R Foundations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#getting-started-with-r-and-rstudio"><i class="fa fa-check"></i><b>1.1</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#the-integrated-development-environment"><i class="fa fa-check"></i><b>1.1.1</b> The Integrated Development Environment</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#learning-to-read-code"><i class="fa fa-check"></i><b>1.1.2</b> Learning to Read Code</a></li>
+<li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#practices-in-reproducibility"><i class="fa fa-check"></i><b>1.1.3</b> Practices in Reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#coding-in-r"><i class="fa fa-check"></i><b>1.2</b> Coding in R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#set-your-working-directory"><i class="fa fa-check"></i><b>1.2.1</b> Set Your Working Directory</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#operators"><i class="fa fa-check"></i><b>1.2.2</b> Operators</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#functions"><i class="fa fa-check"></i><b>1.2.3</b> Functions</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#objects"><i class="fa fa-check"></i><b>1.2.4</b> Objects</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#case-study"><i class="fa fa-check"></i><b>1.3</b> Case Study</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#review"><i class="fa fa-check"></i><b>1.4</b> Review</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.5</b> References</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#r-short-course-series"><i class="fa fa-check"></i><b>1.5.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.5.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html"><i class="fa fa-check"></i><b>2</b> Working with Data in R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#installing-and-calling-packages"><i class="fa fa-check"></i><b>2.1</b> Installing and Calling Packages</a></li>
+<li class="chapter" data-level="2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#importing-and-exporting-data"><i class="fa fa-check"></i><b>2.2</b> Importing and Exporting Data</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#r-based-data"><i class="fa fa-check"></i><b>2.2.1</b> R-based Data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#csv-data"><i class="fa fa-check"></i><b>2.2.2</b> CSV Data</a></li>
+<li class="chapter" data-level="2.2.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#xlsx-data"><i class="fa fa-check"></i><b>2.2.3</b> XLSX Data</a></li>
+<li class="chapter" data-level="2.2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#spss-.sav-data"><i class="fa fa-check"></i><b>2.2.4</b> SPSS “.sav” Data</a></li>
+<li class="chapter" data-level="2.2.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#sas-.sas7bdat-or-.sas7bcat-data"><i class="fa fa-check"></i><b>2.2.5</b> SAS “.sas7bdat” or “.sas7bcat” Data</a></li>
+<li class="chapter" data-level="2.2.6" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#for-stata-.dta-data"><i class="fa fa-check"></i><b>2.2.6</b> For Stata “.dta” Data</a></li>
+<li class="chapter" data-level="2.2.7" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#exporting-data"><i class="fa fa-check"></i><b>2.2.7</b> Exporting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#working-with-datasets"><i class="fa fa-check"></i><b>2.3</b> Working With Datasets</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#viewing-the-dataset"><i class="fa fa-check"></i><b>2.3.1</b> Viewing the Dataset</a></li>
+<li class="chapter" data-level="2.3.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#data-types"><i class="fa fa-check"></i><b>2.3.2</b> Data Types</a></li>
+<li class="chapter" data-level="2.3.3" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#examining-vectors-and-variables"><i class="fa fa-check"></i><b>2.3.3</b> Examining Vectors and Variables</a></li>
+<li class="chapter" data-level="2.3.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#filtering-data"><i class="fa fa-check"></i><b>2.3.4</b> Filtering Data</a></li>
+<li class="chapter" data-level="2.3.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#grouping-data"><i class="fa fa-check"></i><b>2.3.5</b> Grouping Data</a></li>
+<li class="chapter" data-level="2.3.6" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#altering-data"><i class="fa fa-check"></i><b>2.3.6</b> Altering Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#case-study-1"><i class="fa fa-check"></i><b>2.4</b> Case Study</a></li>
+<li class="chapter" data-level="2.5" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#review-1"><i class="fa fa-check"></i><b>2.5</b> Review</a></li>
+<li class="chapter" data-level="2.6" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#references-1"><i class="fa fa-check"></i><b>2.6</b> References</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#r-short-course-series-1"><i class="fa fa-check"></i><b>2.6.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="2.6.2" data-path="working-with-data-in-r.html"><a href="working-with-data-in-r.html#acknowledgements-1"><i class="fa fa-check"></i><b>2.6.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>3</b> Data Visualization</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-visualization.html"><a href="data-visualization.html#overview"><i class="fa fa-check"></i><b>3.1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="data-visualization.html"><a href="data-visualization.html#common-data-visualizations"><i class="fa fa-check"></i><b>3.1.1</b> Common Data Visualizations</a></li>
+<li class="chapter" data-level="3.1.2" data-path="data-visualization.html"><a href="data-visualization.html#visualization-as-the-research-process"><i class="fa fa-check"></i><b>3.1.2</b> Visualization as the Research Process</a></li>
+<li class="chapter" data-level="3.1.3" data-path="data-visualization.html"><a href="data-visualization.html#getting-to-know-the-packages"><i class="fa fa-check"></i><b>3.1.3</b> Getting to Know the Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="data-visualization.html"><a href="data-visualization.html#plotting-in-r"><i class="fa fa-check"></i><b>3.2</b> Plotting in R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-visualization.html"><a href="data-visualization.html#quick-plots"><i class="fa fa-check"></i><b>3.2.1</b> Quick Plots</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-visualization.html"><a href="data-visualization.html#plotting-with-ggplot"><i class="fa fa-check"></i><b>3.2.2</b> Plotting with ggplot</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-visualization.html"><a href="data-visualization.html#case-study-2"><i class="fa fa-check"></i><b>3.3</b> Case Study</a></li>
+<li class="chapter" data-level="3.4" data-path="data-visualization.html"><a href="data-visualization.html#review-2"><i class="fa fa-check"></i><b>3.4</b> Review</a></li>
+<li class="chapter" data-level="3.5" data-path="data-visualization.html"><a href="data-visualization.html#references-2"><i class="fa fa-check"></i><b>3.5</b> References</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="data-visualization.html"><a href="data-visualization.html#r-short-course-series-2"><i class="fa fa-check"></i><b>3.5.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="3.5.2" data-path="data-visualization.html"><a href="data-visualization.html#acknowledgements-2"><i class="fa fa-check"></i><b>3.5.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html"><i class="fa fa-check"></i><b>4</b> Foundations of Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#descriptive-statistics"><i class="fa fa-check"></i><b>4.1</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#case-study-part-one"><i class="fa fa-check"></i><b>4.1.1</b> Case Study Part One</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#correlational-statistics"><i class="fa fa-check"></i><b>4.2</b> Correlational Statistics</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#how-correlation-works"><i class="fa fa-check"></i><b>4.2.1</b> How Correlation Works</a></li>
+<li class="chapter" data-level="4.2.2" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#correlation-not-causation"><i class="fa fa-check"></i><b>4.2.2</b> Correlation, not Causation?</a></li>
+<li class="chapter" data-level="4.2.3" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#statistical-significance"><i class="fa fa-check"></i><b>4.2.3</b> Statistical Significance</a></li>
+<li class="chapter" data-level="4.2.4" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#choosing-the-right-test"><i class="fa fa-check"></i><b>4.2.4</b> Choosing the Right Test</a></li>
+<li class="chapter" data-level="4.2.5" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#case-study-part-two"><i class="fa fa-check"></i><b>4.2.5</b> Case Study Part Two</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#review-3"><i class="fa fa-check"></i><b>4.3</b> Review</a></li>
+<li class="chapter" data-level="4.4" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#references-3"><i class="fa fa-check"></i><b>4.4</b> References</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#r-short-course-series-3"><i class="fa fa-check"></i><b>4.4.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="4.4.2" data-path="foundations-of-statistical-analysis.html"><a href="foundations-of-statistical-analysis.html#acknowledgements-3"><i class="fa fa-check"></i><b>4.4.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html"><i class="fa fa-check"></i><b>5</b> Exploring and Modeling Data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#quick-review"><i class="fa fa-check"></i><b>5.1</b> Quick Review</a></li>
+<li class="chapter" data-level="5.2" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#correlational-models"><i class="fa fa-check"></i><b>5.2</b> Correlational Models</a></li>
+<li class="chapter" data-level="5.3" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#simple-and-multiple-regression"><i class="fa fa-check"></i><b>5.3</b> Simple and Multiple Regression</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#multiple-regression"><i class="fa fa-check"></i><b>5.3.1</b> Multiple Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#inferential-statistics"><i class="fa fa-check"></i><b>5.4</b> Inferential Statistics</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#hypothesis-testing"><i class="fa fa-check"></i><b>5.4.1</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="5.4.2" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#the-role-of-statistics-in-hypothesis-testing"><i class="fa fa-check"></i><b>5.4.2</b> The Role of Statistics in Hypothesis Testing</a></li>
+<li class="chapter" data-level="5.4.3" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#checking-biases"><i class="fa fa-check"></i><b>5.4.3</b> Checking Biases</a></li>
+<li class="chapter" data-level="5.4.4" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#tests-of-group-differences"><i class="fa fa-check"></i><b>5.4.4</b> Tests of Group Differences</a></li>
+<li class="chapter" data-level="5.4.5" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#reporting-support"><i class="fa fa-check"></i><b>5.4.5</b> Reporting Support</a></li>
+<li class="chapter" data-level="5.4.6" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#inferential-modeling"><i class="fa fa-check"></i><b>5.4.6</b> Inferential Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#review-4"><i class="fa fa-check"></i><b>5.5</b> Review</a></li>
+<li class="chapter" data-level="5.6" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#references-4"><i class="fa fa-check"></i><b>5.6</b> References</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#r-short-course-series-4"><i class="fa fa-check"></i><b>5.6.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="5.6.2" data-path="exploring-and-modeling-data.html"><a href="exploring-and-modeling-data.html#acknowledgements-4"><i class="fa fa-check"></i><b>5.6.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html"><i class="fa fa-check"></i><b>6</b> Structural Equation Modeling</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html#sem-syntax"><i class="fa fa-check"></i><b>6.1</b> SEM Syntax</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html#running-interpreting-and-visualizing-models"><i class="fa fa-check"></i><b>6.1.1</b> Running, Interpreting, and Visualizing Models</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html#case-study-3"><i class="fa fa-check"></i><b>6.2</b> Case Study</a></li>
+<li class="chapter" data-level="6.3" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html#review-5"><i class="fa fa-check"></i><b>6.3</b> Review</a></li>
+<li class="chapter" data-level="6.4" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html#references-5"><i class="fa fa-check"></i><b>6.4</b> References</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html#r-short-course-series-5"><i class="fa fa-check"></i><b>6.4.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="6.4.2" data-path="structural-equation-modeling.html"><a href="structural-equation-modeling.html#acknowledgements-5"><i class="fa fa-check"></i><b>6.4.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>7</b> Network Analysis</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="network-analysis.html"><a href="network-analysis.html#zacharies-karate-club-case-study"><i class="fa fa-check"></i><b>7.1</b> Zacharies Karate Club Case Study</a></li>
+<li class="chapter" data-level="7.2" data-path="network-analysis.html"><a href="network-analysis.html#community-detection"><i class="fa fa-check"></i><b>7.2</b> Community Detection</a></li>
+<li class="chapter" data-level="7.3" data-path="network-analysis.html"><a href="network-analysis.html#network-simulation"><i class="fa fa-check"></i><b>7.3</b> Network Simulation</a></li>
+<li class="chapter" data-level="7.4" data-path="network-analysis.html"><a href="network-analysis.html#advanced-case-study"><i class="fa fa-check"></i><b>7.4</b> Advanced Case Study</a></li>
+<li class="chapter" data-level="7.5" data-path="network-analysis.html"><a href="network-analysis.html#datasets-for-network-analysis"><i class="fa fa-check"></i><b>7.5</b> Datasets for Network Analysis</a></li>
+<li class="chapter" data-level="7.6" data-path="network-analysis.html"><a href="network-analysis.html#review-6"><i class="fa fa-check"></i><b>7.6</b> Review</a></li>
+<li class="chapter" data-level="7.7" data-path="network-analysis.html"><a href="network-analysis.html#references-6"><i class="fa fa-check"></i><b>7.7</b> References</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="network-analysis.html"><a href="network-analysis.html#r-short-course-series-6"><i class="fa fa-check"></i><b>7.7.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="7.7.2" data-path="network-analysis.html"><a href="network-analysis.html#acknowledgements-6"><i class="fa fa-check"></i><b>7.7.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-analysis.html"><a href="text-analysis.html"><i class="fa fa-check"></i><b>8</b> Text Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="text-analysis.html"><a href="text-analysis.html#r-and-text-data"><i class="fa fa-check"></i><b>8.1</b> R and Text Data</a></li>
+<li class="chapter" data-level="8.2" data-path="text-analysis.html"><a href="text-analysis.html#cleaning-and-processing-text"><i class="fa fa-check"></i><b>8.2</b> Cleaning and Processing Text</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="text-analysis.html"><a href="text-analysis.html#case-study-1-1"><i class="fa fa-check"></i><b>8.2.1</b> Case Study 1</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="text-analysis.html"><a href="text-analysis.html#quantitative-text-analysis"><i class="fa fa-check"></i><b>8.3</b> Quantitative Text Analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="text-analysis.html"><a href="text-analysis.html#sentiment-analysis"><i class="fa fa-check"></i><b>8.4</b> Sentiment Analysis</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="text-analysis.html"><a href="text-analysis.html#case-study-two"><i class="fa fa-check"></i><b>8.4.1</b> Case Study Two</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="text-analysis.html"><a href="text-analysis.html#networks-with-hamilton-lyrics"><i class="fa fa-check"></i><b>8.5</b> Networks with Hamilton Lyrics</a></li>
+<li class="chapter" data-level="8.6" data-path="text-analysis.html"><a href="text-analysis.html#topic-modeling"><i class="fa fa-check"></i><b>8.6</b> Topic Modeling</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="text-analysis.html"><a href="text-analysis.html#a-note-on-word-embeddings"><i class="fa fa-check"></i><b>8.6.1</b> A Note on Word Embeddings</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="text-analysis.html"><a href="text-analysis.html#review-7"><i class="fa fa-check"></i><b>8.7</b> Review</a></li>
+<li class="chapter" data-level="8.8" data-path="text-analysis.html"><a href="text-analysis.html#references-7"><i class="fa fa-check"></i><b>8.8</b> References</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="text-analysis.html"><a href="text-analysis.html#r-short-course-series-7"><i class="fa fa-check"></i><b>8.8.1</b> R Short Course Series</a></li>
+<li class="chapter" data-level="8.8.2" data-path="text-analysis.html"><a href="text-analysis.html#acknowledgements-7"><i class="fa fa-check"></i><b>8.8.2</b> Acknowledgements</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R for Data Science: A LISA 2020 Guidebook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Introduction to R for Data Science: A LISA 2020 Guidebook</h1>
+<p class="author"><em>Jacob D. Holster</em></p>
+<p class="date"><em>2022-07-09</em></p>
+</div>
+<div id="r-foundations" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> R Foundations<a href="index.html#r-foundations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Data science is emerging as a vital skill for researchers, analysts, librarians, and others who deal with data in their personal and professional work. In essence, data science is the application of the scientific method to data for the purpose of understanding the world we live in. More specifically, data science tasks emerge from an interdisciplinary amalgam of statistical analysis, computer science, and social science research conventions. Although other programming languages such as python exceed R in general popularity, R remains as one of the most popular programming languages for data scientists and researchers due to a focus on statistical programming. As such, R and RStudio are invaluable tools to the data scientist, statistician, researcher, and many others.</p>
+<p>This guidebook aims to provide readers an opportunity to make a start towards learning R for a variety of data science tasks, include (a) data cleaning and preparation, (b) statistical analysis, (c) data visualization, (d) natural language processing, (e) network analysis, and (f) Structural Equation Modeling to name a few. In Chapters <a href="index.html#r-foundations">1</a> and <a href="working-with-data-in-r.html#working-with-data-in-r">2</a> we invite readers to install R and RStudio and to start manipulating data for analysis. Chapter <a href="data-visualization.html#data-visualization">3</a> and Chapter <a href="foundations-of-statistical-analysis.html#foundations-of-statistical-analysis">4</a> include introductory exercises to teach data visualization and statistical analysis in R. In Chapter <a href="exploring-and-modeling-data.html#exploring-and-modeling-data">5</a> and beyond, you will explore basic analytic concepts (e.g., correlation and regression) and more advanced approaches to data modeling through the lenses of Structural Equation Modeling, Network Analysis, and Text Analysis.</p>
+<p>By the end of this guidebook, among several other skills, you will be able to use R to visualize distributions of data across categorical groups, such as in the example below:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;musicclassintentions.csv&#39;</span>)</span>
+<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb1-6"><a href="index.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
+<span id="cb1-7"><a href="index.html#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> Level,</span>
+<span id="cb1-8"><a href="index.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> intentions,</span>
+<span id="cb1-9"><a href="index.html#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Distribution of Intentions to Sign Up for Music Across Grade Level&quot;</span></span>
+<span id="cb1-10"><a href="index.html#cb1-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="IDSR_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Calculate correlation coefficients, and visualize relationships between your data:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="index.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="index.html#cb2-4" aria-hidden="true" tabindex="-1"></a>variablelist <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">select</span>(intentions, values, needs, parentsupport, SESComp)</span>
+<span id="cb2-5"><a href="index.html#cb2-5" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">pairs.panels</span>(variablelist, </span>
+<span id="cb2-6"><a href="index.html#cb2-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="co"># correlation method</span></span>
+<span id="cb2-7"><a href="index.html#cb2-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">hist.col =</span> <span class="st">&quot;#00AFBB&quot;</span>,</span>
+<span id="cb2-8"><a href="index.html#cb2-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">density =</span> <span class="cn">TRUE</span>,  <span class="co"># show density plots</span></span>
+<span id="cb2-9"><a href="index.html#cb2-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">ellipses =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb2-10"><a href="index.html#cb2-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">lm =</span> TRUE<span class="co"># show correlation ellipses</span></span>
+<span id="cb2-11"><a href="index.html#cb2-11" aria-hidden="true" tabindex="-1"></a>             )</span></code></pre></div>
+<p><img src="IDSR_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Fit General Linear Models (GLM) and produce publishable tables:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="index.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-3"><a href="index.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb3-4"><a href="index.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="index.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(<span class="fu">lm</span>(intentions <span class="sc">~</span> SESComp <span class="sc">+</span> parentsupport <span class="sc">+</span> needs <span class="sc">+</span> values, <span class="at">data=</span>data)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="index.html#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">&quot;Estimates for Variation in Music Elective Intentions.&quot;</span>,</span>
+<span id="cb3-7"><a href="index.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Predictor&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;SE&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;p&quot;</span>),</span>
+<span id="cb3-8"><a href="index.html#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">digits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-4">Table 1.1: </span>Estimates for Variation in Music Elective Intentions.</caption>
+<thead>
+<tr class="header">
+<th align="left">Predictor</th>
+<th align="right">B</th>
+<th align="right">SE</th>
+<th align="right">t</th>
+<th align="right">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">-5.42</td>
+<td align="right">6.261</td>
+<td align="right">-0.87</td>
+<td align="right">0.394</td>
+</tr>
+<tr class="even">
+<td align="left">SESComp</td>
+<td align="right">3.87</td>
+<td align="right">1.639</td>
+<td align="right">2.36</td>
+<td align="right">0.025</td>
+</tr>
+<tr class="odd">
+<td align="left">parentsupport</td>
+<td align="right">0.52</td>
+<td align="right">0.306</td>
+<td align="right">1.69</td>
+<td align="right">0.101</td>
+</tr>
+<tr class="even">
+<td align="left">needs</td>
+<td align="right">-0.28</td>
+<td align="right">0.115</td>
+<td align="right">-2.40</td>
+<td align="right">0.023</td>
+</tr>
+<tr class="odd">
+<td align="left">values</td>
+<td align="right">0.28</td>
+<td align="right">0.072</td>
+<td align="right">3.90</td>
+<td align="right">0.001</td>
+</tr>
+</tbody>
+</table>
+<p>Fit, interpret, and visualize Structural Equation Models (SEM):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span>
+<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(semPlot)</span>
+<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="index.html#cb4-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="st">&#39;</span></span>
+<span id="cb4-5"><a href="index.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">  # regressions</span></span>
+<span id="cb4-6"><a href="index.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">    needs ~ parentsupport</span></span>
+<span id="cb4-7"><a href="index.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">    values ~ needs + parentsupport + peersupport</span></span>
+<span id="cb4-8"><a href="index.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">    intentions ~ values + needs + SESComp&#39;</span> </span>
+<span id="cb4-9"><a href="index.html#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="index.html#cb4-10" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">sem</span>(model, <span class="at">data=</span>data)</span>
+<span id="cb4-11"><a href="index.html#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="index.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">semPaths</span>(fit, <span class="at">what =</span> <span class="st">&quot;path&quot;</span>, <span class="at">whatLabels =</span> <span class="st">&quot;std&quot;</span>, <span class="at">style =</span> <span class="st">&quot;lisrel&quot;</span>, <span class="at">edge.label.cex =</span> .<span class="dv">9</span>, <span class="at">rotation =</span> <span class="dv">2</span>, <span class="at">curve =</span> <span class="dv">3</span>, <span class="at">layoutSplit =</span> <span class="cn">FALSE</span>, <span class="at">normalize =</span> <span class="cn">FALSE</span>, <span class="at">height =</span> <span class="dv">9</span>, <span class="at">width =</span> <span class="fl">6.5</span>, <span class="at">residScale =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="IDSR_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>As well as clean text data and analyze large corpora through the lenses of machine learning concepts such as sentiment analysis and topic modeling:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sentimentr)</span>
+<span id="cb5-2"><a href="index.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sentiment</span>(<span class="st">&#39;Sentiment analysis is super fun. I hate sentiment analysis. Sentiment analysis is okay&#39;</span>)</span></code></pre></div>
+<pre><code>##    element_id sentence_id word_count  sentiment
+## 1:          1           1          5  0.6708204
+## 2:          1           2          4 -0.3750000
+## 3:          1           3          4  0.0000000</code></pre>
+<p>Each concept is presented with unique datasets, including qualitative data from Harry Potter, Hamilton, and Donald Trump Tweets, and quantitative data from <code>baseR</code> datasets such as <code>mtcars</code>, elective intentions data for middle school students, and other real world data.</p>
+<p>Additionally, there will be an informal assessment tied to each chapter so you can test and apply your skills as you move through the book.</p>
+<div id="getting-started-with-r-and-rstudio" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Getting Started with R and RStudio<a href="index.html#getting-started-with-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter contains an introduction to the installation of R, how to install packages, and an introduction to object-based coding concepts. If you are having trouble downloading R and installing your first packages, please view the optional check in assessment at <a href="https://jayholster.shinyapps.io/RLevel0Assessment/" class="uri">https://jayholster.shinyapps.io/RLevel0Assessment/</a> Take a few minutes to download and install both R and RStudio. They are both free and easy to download.</p>
+<ul>
+<li><p>Download R from <a href="https://cran.r-project.org/" class="uri">&lt;https://cran.r-project.org/&gt;</a> Choose your operating system (Windows, MacOS, or Linux) and download as you would any other program.</p></li>
+<li><p>Download the free version of RStudio for your OS from <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">&lt;https://www.rstudio.com/products/rstudio/download/&gt;</a> Follow prompts to install.</p></li>
+</ul>
+<p>According to Rstudio’s documentation, <a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf" class="uri">&lt;https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf&gt;</a>): “when R is running, variables, data, functions, results, etc, are stored in the active memory of the computer in the form of <code>objects</code> which have a name. The user can do actions on these objects with operators (arithmetic, logical,comparison, . . .) and functions (which are themselves objects).” We will explore the concept and capabilities of the <code>obect</code> throughout this text.</p>
+<div id="the-integrated-development-environment" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> The Integrated Development Environment<a href="index.html#the-integrated-development-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Where R is a programming language, RStudio is an integrated development environment (IDE) which enables users to efficiently access and view most facets of the program in a four pane environment. These include the source, console, environment and history, as well as the files, plots, packages and help. The console is in the lower-left corner, and this is where commands are entered and output is printed. The source pane is in the upper-left corner, and is a built in text editor. While the console is where commands are entered, the source pane includes executable code which communicates with the console. The environment tab, in the upper-right corner displays an list of loaded R objects. The history tab tracks the user’s keystrokes entered into the console. Tabs to view plots, packages, help, and output viewer tabs are in the lower-right corner.</p>
+<p>Where SPSS and other menu based analytic software are limited by user input and installed software features, R operates as a mediator between user inputs and open source developments from our colleagues all over the world. This affords R users a certain flexibility. However, it takes a few extra steps to appropriately launch projects. Regardless of your needs with R, you will likely interact with the following elements of document set up.</p>
+</div>
+<div id="learning-to-read-code" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Learning to Read Code<a href="index.html#learning-to-read-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<blockquote>
+<p>“Numquam ponenda est pluralitas sine necessitate. Plurality is never to be posited without necessity.”</p>
+<p>William of Occam, circa 1495</p>
+</blockquote>
+<p>The most formidable challenge many new R users face is learning to code. While coding can seem daunting at first, it is important to remember that all coding tasks simply involve solutions to problems the user identifies. No matter how difficult the problem, there are always a lot of solutions to each problems, and someone else has always encountered the solution, and likely has posted it to a forum. Occams Razor (i.e., the solution with the least amount of assumptions is the best) helps you identify the problems to solve as you interact with code. For new users, your breakthrough moment where you start to feel like a programmer might come from a well-worded google search and a focused effort to solve an issue with the R programming language. It is, indeed, a language, so half of the battle is learning to read code in a manner that is meaningful to you. Throughout this guidebook, you will be provided with tutorials and suggestions for reading the code you interact with. In this first chapter, you will start to encounter objects, functions, arguments, and operators. It is important to develop code reading fluency. As such, I encourage readers to speak code out loud to themselves as they interact with this guidebook.</p>
+</div>
+<div id="practices-in-reproducibility" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Practices in Reproducibility<a href="index.html#practices-in-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is important—whether you are working alone or with others—to adopt a collaboration mindset. This value is clearly important when working with other statistical collaborators or with domain experts who do not have experience in R. Even experienced users might become confused when examining a peer’s code. The same effect may occur if you return to a project after many months, and find yourself lost in your own code. As such, I recommend utilizing R markdown files <code>(File -&gt; New File -&gt; R Markdown)</code>and comments <code>#</code> to provide notes to yourself and others who might interact with your code. For instance, this is an R Markdown document (<code>.Rmd</code> for file extensions). R Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents that can include blocks of code, as well as space for narrative to describe the code. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>The <code>#</code> symbol is used to change the size of headers <code>### = small, ## = medium, # = large</code>. There several options for formatting R markdown documents. For a introductory and comprehensive cheatsheet, see <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf" class="uri">https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf</a></p>
+<p>There are no rules for how you should format your document. If you only need to write R code and have no need for whitespace or printing out your work, you can use an R script (<code>File -&gt; New File -&gt; R Script</code>). However, clean coding practices often require annotation, and R markdown makes that easy.</p>
+<p>When you click the <code>Knit</code> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can quickly insert chunks into your R Markdown file with the keyboard shortcut <code>Cmd + Option + I (Ctrl + Alt + I for Windows users)</code>. Comments can be utilized within code chunks, and are not considered a functioning part of the code to R.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># This is an example of a comment.</span></span></code></pre></div>
+<p>No matter what coding format you choose, insert narrative into your document in a way that makes sense to you. It may be helpful to split your code up into small, easy to digest chunks as to not become overwhelmed when examining your work.</p>
+</div>
+</div>
+<div id="coding-in-r" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Coding in R<a href="index.html#coding-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="set-your-working-directory" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Set Your Working Directory<a href="index.html#set-your-working-directory" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is helpful to use a project specific directory and to frequently save your work. When you first use R follow this procedure: Create a sub-directory (folder), “R” for example, in your “Documents” folder, or somewhere on your machine that you can easily access. This sub-folder, also known as working directory, will be used by R to read and save files. Think of it as a download and upload folder for R only.</p>
+<p>You can specify your working directory to R in a few ways. One option is to click the <code>"Session"</code> drop down menu at the top of your screen and then click <code>"Set Working Directory."</code> It might also be useful to change the directory using code. To do this, use the function <code>setwd()</code>, and then enter the path of your directory into the parenthesis. Your working directory path will look something like what you see below. If you are unsure about the path you should input here, find the folder using your machine’s finder function, right click the folder, and examine the details of the folder’s path. Make sure that you are using forward slashes in quotes as the example indicates.</p>
+<p>You will need to run the code chunk in order to process the change in working directory. To run a code chunk, you can select the code you want to run and hit command and enter simultaneously on Mac, or control and enter on a Windows machine. Alternatively, you can click the green play button in the top right corner of the code chunk to run the entire cell.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&#39;/Users/username/Desktop/R/&#39;</span>)</span></code></pre></div>
+</div>
+<div id="operators" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Operators<a href="index.html#operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If this is your first foray into coding, you might think of it as a conversation you are having with R about a problem you are trying to solve. To start, you might consider simple arithmetic as the problem, and the code you write as the conversation. You can talk to R using numerical digits and text. Operators are the symbols that connect your numbers or words with mathematical (e.g., addition), relational (e.g., &gt;=), and other logical or conditional manipulations</p>
+<p>To start coding with mathematical operators, enter a number in the code box below, then click the run button.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span></span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>Now, pick a set of two numerals to sum, placing an addition sign between them. Then click the run button. Considering operators alone, R can be utilized as a simple calculator.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="index.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<p>Base R comes with working mathematical operators for addition <code>+</code>, subtraction <code>-</code>, multiplication <code>*</code>, division <code>/</code>, and exponents <code>^</code>. Although I’ve left an example for you below, you might try making your own.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="index.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span><span class="sc">+</span><span class="dv">2-10</span><span class="sc">*</span><span class="dv">40</span></span></code></pre></div>
+<pre><code>## [1] -391</code></pre>
+</div>
+<div id="functions" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Functions<a href="index.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Functions run specific tasks based on the arguments within parenthesis. For example, the <code>sum()</code> function adds a specified number set. You can read the code below to say “sum the numbers 1 and 10.”</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="index.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<p>There are some grammatical conventions that R requires to successfully run code. When you try to run this function below without the comma, R returns an error. Fix this example by including a comma directly after the first number. It does not matter whether you have a space after the comma before the next numeral. If any part of your code is not correct, it will produce an error message like you see below. The “unexpected numeric constant” in the error message refers to the space after the 1 that was not preceded by a comma.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="index.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## Error: &lt;text&gt;:1:7: unexpected numeric constant
+## 1: sum(1 10
+##           ^</code></pre>
+<p>Instead of a comma, you can use a colon—another operator—to sum a sequence of numbers. You can read this code aloud saying “sum all numbers from 1 to 10.”</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="index.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 55</code></pre>
+<p>There are a plethora of pre-installed functions in R. R also has the capability to find the right function for you. For instance, you might encounter a new function which you are not familiar with, like <code>seq()</code> below. To investigate what this function does, place your cursor after ‘seq’ but before the first parenthesis, and press tab. Hover over the function <code>seq</code> in the dropdown list to see a full description. If you need more information, you might use the <code>help()</code> function, with the name of the function you are curious about inside the parenthesis. The description indicates that the function is used to generate regular sequences. The information that emerges from using the <code>help()</code> function describes a list of arguments, including from, to, and by. This pane will populate on the bottom right side of RStudio when you run the <code>help()</code> function. Based on this information, what do you think the output of the first line in the following chunk will be?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="index.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1]  0  4  8 12 16 20</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(seq)</span></code></pre></div>
+<p>Was the output what you expected? The <code>seq()</code> function generates a sequence of numbers. In this example, 0 and 20 are the upper and lower limits of this sequence. The 4 indicates that the sequence should list numbers from 0 to 20 in increments of 4. Now, look to the bottom right side RStudio. Since you ran the entire cell, the command ‘help(seq)’ launched a search in the R documentation for the seq function in addition to running the seq function. Here, we can ascertain that this function takes a set of arguments <code>(from = 0, to = 20, by = 4)</code>. When you paste that exact code into the <code>seq</code> function, it generates the same result. Try it!</p>
+</div>
+<div id="objects" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Objects<a href="index.html#objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You may have heard the phrase “object-oriented programming.” This phrase is accurate as all coding in R relies on the assignment of objects. When you assign an object in R, you are indicating that you want R to remember this assignment so it can be used as part of other code. <code>pi</code> is an example of an object built into base R. The input below is not numeric, but still represents a number. Run the code, and you will see that the word pi has been assigned the numeric value of pi. This is one of the few predefined objects in R.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="index.html#cb24-1" aria-hidden="true" tabindex="-1"></a>pi </span></code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<p>You might also assign a number pi to an object you name yourself.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fl">3.141593</span></span></code></pre></div>
+<p>To assign values to objects, as the numerical content of pi was to the object x, use the <code>&lt;-</code> operator. For example, the code segment below assigns the value 50 to the object ‘a’, and 14 to the object ‘b’ using the <code>&lt;-</code> operator. It may be helpful to read the code out loud, saying a is 50, and b is 14.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="index.html#cb27-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb27-2"><a href="index.html#cb27-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">14</span> </span></code></pre></div>
+<p>There are five basic types of objects in R. The objects a, b, and x are each examples of <strong>vectors</strong>, or homogeneous data made up of characters, logical, numerical, or integer values. Additionally, a <strong>list</strong> of heterogeneous data (i.e., involving multiple data types) can be assigned to an object. <strong>Matricies</strong>, or two-dimensional data with undefined column headers, and <strong>data frames</strong>, a matrix with multiple specified columns that represent a certain type of observation seen in corresponding rows, can also be assigned to objects. Moreover, many objects are typically involved in coding and they tend to interact with each other.</p>
+<p>See the code chunk below for a simple example of the interaction of two objects that were assigned in the previous code chunk.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="index.html#cb28-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code></pre></div>
+<pre><code>## [1] 64</code></pre>
+<p>Notice that R held the object assignments from the previous cell. You can also assign a function to an object, and call that object to execute the function. For instance:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" aria-hidden="true" tabindex="-1"></a>addvalues <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span>
+<span id="cb30-2"><a href="index.html#cb30-2" aria-hidden="true" tabindex="-1"></a>addvalues</span></code></pre></div>
+<pre><code>## [1] 64</code></pre>
+<p>The product is not reached because R understands the input <code>addvalues</code>, but because the object add values calls the newly defined function ‘a + b’. Try switching the values of a and b three chunks ago, and running the subsequent chunks. Remember that objects are case sensitive and cannot contain spaces. If you ran the code ‘A+B’, what would happen?</p>
+</div>
+</div>
+<div id="case-study" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Case Study<a href="index.html#case-study" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now it is time for our first case study.</p>
+<p>You are approached by a colleague who wants create code that sums numerical values associated with letters in others’ names (e.g., a = 1, b = 2,… z = 26). To start on this project, create 26 objects, one for each letter of the alphabet. Then sum your own name using mathematical expressions and the objects you created.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="index.html#cb32-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb32-2"><a href="index.html#cb32-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb32-3"><a href="index.html#cb32-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="co"># and so on</span></span></code></pre></div>
+</div>
+<div id="review" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Review<a href="index.html#review" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this chapter, we explored how to download R and R studio, set up our working directory, learned about object based programming, and began to work with a few functions. To make sure you understand the material, there is a practice assessment to go along with this chapter at <a href="https://jayholster.shinyapps.io/RLevel0Assessment/" class="uri">https://jayholster.shinyapps.io/RLevel0Assessment/</a>.</p>
+</div>
+<div id="references" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> References<a href="index.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Duignan, B. (2021). <em>Occam’s razor</em>. <em>Encyclopedia Britannica</em>. <a href="https://www.britannica.com/topic/Occams-razor" class="uri">https://www.britannica.com/topic/Occams-razor</a></p>
+<p>Epskamp, S. (2015). semPlot: Unified visualizations of structural equation models. <em>Structural Equation Modeling, 22</em>(3), 474–483. <a href="https://psycnet.apa.org/doi/10.1080/10705511.2014.937847">&lt;https://doi.org/10.1080/10705511.2014.937847&gt;</a></p>
+<p>Patil, I. (2021). Visualizations with statistical details: The ‘ggstatsplot’ approach. <em>Journal of Open Source Software</em>, <em>6</em>(61), 3167. [<a href="https://doi.org/%5B10.21105/joss.03167" class="uri">https://doi.org/[10.21105/joss.03167](https://doi.org/%5B10.21105/joss.03167){.uri}</a></p>
+<p>Robinson D, Hayes A, &amp; Couch, S. (2022). <em>broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://broom.tidymodels.org/," class="uri">https://broom.tidymodels.org/,</a> <a href="https://github.com/tidymodels/broom." class="uri">https://github.com/tidymodels/broom.</a></p>
+<p>Revelle, W. (2017) psych: Procedures for Personality and Psychological Research, Northwestern University, Evanston, Illinois, USA, <a href="https://cran.r-project.org/package=psych">&lt;https://CRAN.R-project.org/package=psych&gt;</a> Version = 1.7.8.</p>
+<p>Rinker, T.W. (2021). <em>sentimentr: Calculate Text Polarity Sentiment</em>. version 2.9.0, <a href="https://github.com/trinker/sentimentr" class="uri">https://github.com/trinker/sentimentr</a>.</p>
+<p>Rosseel, Y. (2012). lavaan: An R Package for Structural Equation Modeling. <em>Journal of Statistical Software</em>, <em>48</em>(2), 1–36. <a href="https://doi.org/10.18637/jss.v048.i02">https://doi.org/[10.18637/jss.v048.i02](https://doi.org/%5B10.18637/jss.v048.i02){.uri}</a>.</p>
+<p>Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L.D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T.L., Miller, E., Bache, S.M., Müller, K., Ooms, J., Robinson, D., Seidel, D.P., Spinu, V., Takahashi, K., Vaughan, D., Wilke, C., Woo, K., &amp; Yutani, H. (2019). Welcome to the tidyverse. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686. <a href="https://doi.org/%5B10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a>.</p>
+<p>Xie, Y. (2021). <em>knitr: A General-Purpose Package for Dynamic Report Generation in R</em>. <a href="https://yihui.org/knitr/" class="uri">https://yihui.org/knitr/</a></p>
+<div id="r-short-course-series" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> R Short Course Series<a href="index.html#r-short-course-series" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Video lectures of each guidebook chapter can be found at <a href="https://osf.io/6jb9t/" class="uri">https://osf.io/6jb9t/</a>. For this chapter, find the follow the folder path R Level Zero -&gt; AY 2021-2022 Spring and access the video files, r markdown documents, and other materials for each short course.</p>
+</div>
+<div id="acknowledgements" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Acknowledgements<a href="index.html#acknowledgements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This guidebook was created with support from the Center for Research Data and Digital Scholarship and the Laboratory for Interdisciplinary Statistical Analaysis at the University of Colorado Boulder, as well as the U.S. Agency for International Development under cooperative agreement #7200AA18CA00022. Individuals who contributed to materials related to this project include Jacob Holster, Eric Vance, Michael Ramsey, Nicholas Varberg, and Nickoal Eichmann-Kalwara.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="working-with-data-in-r.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["IDSR.pdf", "IDSR.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
